@@ -1,0 +1,21 @@
+# Project 1 - JavaScript Game
+​
+## The task
+Welcome to the bowels of JavaScript - it's time to try your hand at a Javascript browser game! The idea is to help you familiarise yourself with JavaScript syntax, methods and functions and create something impactful for your portfolio.
+​
+## The delivery
+You will deliver the game in a presentation on Friday 12th June that will be recorded. The game should be fully playable by that date, but you have the rest of the course to add finishing touches and improve the code.
+​
+## The criteria
+ - Built using HTML, CSS and JavaScript
+ - Playable by a user using click events, typed inputs and keyboard events.
+ - No use of HTML canvas.
+ - Responsive, and correctly viewable at all device widths.
+ - Reset functionality to allow the game to be immediately replayed.
+ - MUST make use of functions to neatly organise code.
+ - MUST follow ES6+ JS coding standards.
+ - MUST be hosted on your Github with at least 15 git commits.
+​
+If you want to push yourself, try and build it using classes to be fully object oriented!!!
+​
+BEST OF LUCK!

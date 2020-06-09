@@ -8,19 +8,30 @@
 </head>
 <body>
   
-  <section class="opening-screen">
+  <section class="opening-screen" id="opening-screen">
     <p>Your name:</p>
-    <input type="text" placeholder="Phil Ivey">
-    <p>How many decks? (2-8)</p>
-    <input type="text" placeholder="6">
-    <div id="start">Start</div>
+    <input type="text" placeholder="Phil Ivey" id="player-name">
+    <p>How many decks?</p>
+    <form action="">
+    <label for="four-decks">Four:</label>
+    <input type="radio" id="four-decks" name="decks" value="4">
+    <label for="six-decks">Six:</label>
+    <input type="radio" id="six-decks" name="decks" value="6">
+    <label for="eight-decks">Eight:</label>
+    <input type="radio" id="eight-decks" name="decks" value="8">
+  </form>
+    <div class="btn" id="start">Start</div>
   </section>
-</main>
 
 <main class="main-game-board">
 <section>
-  <h2>Title</h2>
-  <div class="shoe">Shoe</div>
+  <div class="shoe" id="shoe">Shoe</div>
+  <h2>Baccarrat</h2>
+</section>
+
+<section class="results">
+  <div id="natural-status"></div>
+  <div id="winner-status"></div>
 </section>
 
 <section class="scores">
@@ -34,7 +45,6 @@
 </section>
 
 <section>
-  <div class="tie" id="dtc">DTC</div>
   <div class="tie" id="tie-bet">tie bet </div>
   <div class="main-bets">
     <div class="bets" id="player-bet">player bet </div>
@@ -43,9 +53,15 @@
 </section>
 
 <section>
-  <div class="deal-button" id="deal-button">DEAL</div>
-  <div class="chips">chips section</div>
-  <div class="bank-screen">money in bank</div>
+  <div class="deal-button btn" id="deal-button">DEAL</div>
+  <div class="tie btn" id="next-hand">Next hand</div>
+</section>
+<section class="player-area">
+  <div id="chips">chips section</div>
+  <div class="main-bets">
+    <div id="name"></div>
+    <div id="bank-screen"></div>
+  </div>
 </section>
 </main>
 

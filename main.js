@@ -59,9 +59,12 @@ class Player {
 }
 
 class Hand {
-  constructor(playerHand, computerHand) {
-    this._playerHand = playerHand;
-    this._computerHand = computerHand;
+  constructor() {
+    this._playerHand = [];
+    this._computerHand = [];
+    this._playerBet = 0;
+    this._bankerBet = 0;
+    this._tieBet = 0;
   }
 
   get playerHand() {
@@ -77,6 +80,30 @@ class Hand {
 
   set computerHand(computerHand) {
     this._computerHand = computerHand;
+  }
+
+  get playerBet() {
+    return this._playerBet;
+  }
+
+  set playerBet(newSize) {
+    this._playerBet = newSize;
+  }
+
+  get bankerBet() {
+    return this._bankerBet;
+  }
+
+  set bankerBet(newSize) {
+    this._bankerBet = newSize;
+  }
+
+  get tieBet() {
+    return this._tieBet;
+  }
+
+  set tieBet(newSize) {
+    this._tieBet = newSize;
   }
 
   readScore(array) {
@@ -183,7 +210,9 @@ class Shoe {
 }
 
 
-//
+/*
+----------- MAIN GAME CONTENT
+*/
 
 const start = document.getElementById('start');
 const openingScreen = document.getElementById('opening-screen');
@@ -230,6 +259,8 @@ nextHand.addEventListener('click', () => {
 
 chipsArea.forEach(e=>{
   e.addEventListener('click', () => {
+    let alreadySelected = chipsArea.filter(e=>{return e.classList.contains('selected')})
+    alreadySelected.forEach(e=>{e.classList.remove('selected')}); 
     if (e.classList.contains('selected')) {
       e.classList.remove('selected')
     } else {
@@ -255,22 +286,31 @@ const startGame = (playerName, deckSize) => {
   console.log(shoe);
   updatePlayerArea();
   shoeDisplay.innerHTML = `Cards left:${shoe.shoe.length}`;
+  hand = new Hand();
 }
 
 const placeChip = (id) => {
-  console.log(id);
+  id = `${id.split('-')[0]}Bet`
+  val = Number(chipsArea.find(e=>e.classList.contains('selected')).innerHTML);
+  hand[id] += val;
+  player.bankroll -= val;
+  console.log(hand);
+  showDealButton();
+  updatePlayerArea();
+
 }
 
 
 const dealHand = () => {
+  hideDealButton();
   let dealtToPlayer = [];
   let dealToComputer = [];
   for (let i=0;i<2;i++){
     dealtToPlayer.push(shoe.dealACard());
     dealToComputer.push(shoe.dealACard());
   }
-  hand = new Hand(dealtToPlayer, dealToComputer);
-  console.log(hand);
+  hand.playerHand = dealtToPlayer;
+  hand.computerHand = dealToComputer;
   updateBoard();
   updateScores();
   if (hand.natural) {
@@ -284,6 +324,33 @@ const toPictureFormat = (array) => {
   let format = array.map(el=>el.split(' ')[0][0] + el.split(' ')[2][0]);
   return format.reduce((a,b)=>{ return a + `<img src="./imgs/poker-super-qr/${b}.svg">` }, '');
 }
+
+const toggleSelected = (id) => {
+  console.log(id);
+  
+  if (id.classList.includes('selected')) {
+    id.classList.remove('selected')
+  } else {
+    id.classList.add('selected')
+  }
+}
+
+
+const showDealButton = () => {
+  dealButton.style.display = 'block';
+};
+
+const showNextHandButton = () => {
+  nextHand.style.display = 'block';
+};
+
+const hideDealButton = () => {
+  dealButton.style.display = 'none';
+};
+
+const hideNextHandButton = () => {
+  nextHand.style.display = 'none';
+};
 
 const updateBoard = () => {
   boards[0].innerHTML = toPictureFormat(hand.playerHand);
@@ -321,14 +388,16 @@ const dealThirdCard = () => {
 const handResult = () => {
   console.log(hand.winner)
   updateResults();
+  showNextHandButton();
   // payout bets
 };
-
 
 const clearBoard = () => {
   scores.forEach(e=>e.innerHTML='');
   boards.forEach(e=>e.innerHTML='');
   results.forEach(e=>e.innerHTML='');
+  hideDealButton();
+  hideNextHandButton();
 };
 
 const resetForNextHand = () => {

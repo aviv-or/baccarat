@@ -21,6 +21,10 @@ body {
           justify-content: center;
 }
 
+body #deal-button, body #next-hand {
+  display: none;
+}
+
 body .btn {
   width: 100px;
   height: 35px;

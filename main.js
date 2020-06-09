@@ -80,29 +80,52 @@ class Hand {
   }
 
   readScore(array) {
-    let score = 0;
-    array.forEach((card) => {
-      if (card[0] === 'A') {
-        score += 1;
-      } else if (card[0] === '1' || !Number(card[0])) {
-        score += 0;
-      } else {
-        score += Number(card[0]);
-      }
-    })
-    score = String(score).split('');
-    return score.length > 1 ? Number(score[1]) : Number(score);
+    console.log(array);
+    if (!array[0]) {return null} else {
+      let score = 0;
+      array.forEach((card) => {
+        if (card[0] === 'A') {
+          score += 1;
+        } else if (card[0] === '1' || !Number(card[0])) {
+          score += 0;
+        } else {
+          score += Number(card[0]);
+        }
+      })
+      score = String(score).split('');
+      return score.length > 1 ? Number(score[1]) : Number(score);
+    }
   };
 
-  playerScore() {
+  get playerScore() {
     return this.readScore(this.playerHand);
   }
 
-  computerScore() {
+  get computerScore() {
     return this.readScore(this.computerHand);
   }
 
+  get natural() {
+    return this.playerScore > 7 || this.computerScore > 7 ? true : false
 
+  }
+
+  thirdCardPlayer() {
+    if (this.playerScore < 5) {return true;} else {return true;}  
+  }
+
+  thirdCardComputer() {
+    let playerThirdCard = this.readScore([this.playerHand[2]]);
+    console.log(this.playerHand[2], this.computerScore);
+    if (!playerThirdCard && this.computerScore < 3) {return true};
+    if (playerThirdCard < 2 && this.computerScore < 4) {return true};
+    if (playerThirdCard < 4 && this.computerScore < 5) {return true};
+    if (playerThirdCard < 6 && this.computerScore < 6) {return true};
+    if (playerThirdCard < 8 && this.computerScore < 7) {return true};
+    if (playerThirdCard < 9 && this.computerScore < 3) {return true};
+    if (playerThirdCard < 10 && this.computerScore < 4) {return true};
+    return false;
+  }
 }
 
 class Shoe {
@@ -206,14 +229,18 @@ const dealHand = () => {
   }
   hand = new Hand(dealtToPlayer, dealToComputer);
   console.log(hand);
-  boards[0].innerHTML = toPictureFormat(hand.playerHand);
-  boards[1].innerHTML = toPictureFormat(hand.computerHand);
+  updateBoard();
   updateScores();
 }
 
+const updateBoard = () => {
+  boards[0].innerHTML = toPictureFormat(hand.playerHand);
+  boards[1].innerHTML = toPictureFormat(hand.computerHand);
+};
+
 const updateScores = () => {
-  scores[0].innerHTML = hand.playerScore();
-  scores[1].innerHTML = hand.computerScore();
+  scores[0].innerHTML = hand.playerScore;
+  scores[1].innerHTML = hand.computerScore;
 };
 
 const toPictureFormat = (array) => {
@@ -224,8 +251,20 @@ const toPictureFormat = (array) => {
 }
 
 const dealThirdCard = () => {
-  hand.playerHand.push(shoe.dealACard());
-  boards[0].innerHTML = toPictureFormat(hand.playerHand);
-  updateScores();
+  if (!hand.natural) {
+    console.log(hand.thirdCardPlayer());
+    if (hand.thirdCardPlayer()){
+      hand.playerHand.push(shoe.dealACard());
+      updateBoard();
+      updateScores();
+    }
+    console.log(hand.thirdCardComputer());
+    if (hand.thirdCardComputer()){
+      hand.computerHand.push(shoe.dealACard());
+      updateBoard();
+      updateScores();
+    }
 
+  } else {console.log('natural')}
+  console.log(hand, shoe);
 }

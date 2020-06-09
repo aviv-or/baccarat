@@ -124,3 +124,6 @@ let testCardsArray = ['Ace of Hearts', '4 of Clubs']
 
 console.log()
 
+let doobie;
+
+console.log(!doobie);

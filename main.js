@@ -111,13 +111,13 @@ class Hand {
   }
 
   thirdCardPlayer() {
-    if (this.playerScore < 5) {return true;} else {return true;}  
+   return this.playerScore < 5 ? true : false ;
   }
 
   thirdCardComputer() {
     let playerThirdCard = this.readScore([this.playerHand[2]]);
-    console.log(this.playerHand[2], this.computerScore);
-    if (!playerThirdCard && this.computerScore < 3) {return true};
+    console.log(this.playerHand[2], playerThirdCard, this.computerScore);
+    if (!playerThirdCard && this.computerScore < 6) {return true};
     if (playerThirdCard < 2 && this.computerScore < 4) {return true};
     if (playerThirdCard < 4 && this.computerScore < 5) {return true};
     if (playerThirdCard < 6 && this.computerScore < 6) {return true};
@@ -126,6 +126,11 @@ class Hand {
     if (playerThirdCard < 10 && this.computerScore < 4) {return true};
     return false;
   }
+
+  get winner() {
+    return this.playerScore > this.computerScore ? 'Player Wins' :  this.computerScore > this.playerScore ? 'Computer Wins' : 'Tie';
+  }
+
 }
 
 class Shoe {
@@ -181,14 +186,17 @@ class Shoe {
 //
 
 const start = document.getElementById('start');
+const openingScreen = document.getElementById('opening-screen');
+const mainGame = document.querySelector('main');
 const dealButton = document.getElementById('deal-button');
+const shoeDisplay = document.getElementById('shoe');
 
-const dtc = document.getElementById('dtc');
-
+const results = Array.from(document.querySelectorAll('.results > div'));
 const boards = Array.from(document.querySelectorAll('.boards > div'));
 const scores = Array.from(document.querySelectorAll('.scores > div'));
+const playerArea = Array.from(document.querySelectorAll('.player-area > div'))
 
-
+const nextHand = document.getElementById('next-hand');
 
 let player;
 let shoe;
@@ -198,7 +206,9 @@ let hand;
 
 
 start.addEventListener('click', () => {
-  startGame();
+  let playerName = document.getElementById('player-name').value;
+  let deckSize = Array.from(document.querySelectorAll('Form > Input')).find(e=>e.checked).value;
+  startGame(playerName, deckSize);
   //some display stuff
 })
 
@@ -207,18 +217,27 @@ dealButton.addEventListener('click', () => {
   //some display stuff
 })
 
-dtc.addEventListener('click', () => {
-  dealThirdCard();
+nextHand.addEventListener('click', () => {
+  resetForNextHand();
 })
 //
 
-const startGame = (playerName) => {
-  player = new Player(playerName, 10000);
-  shoe = new Shoe(6);
+const startGame = (playerName, deckSize) => {
+  openingScreen.style.display = 'none';
+  mainGame.style.display = 'flex';
+  player = new Player(playerName, deckSize);
+  shoe = new Shoe(deckSize);
   shoe.dealADeck();
   shoe.createShoe();
   console.log(shoe);
+  updatePlayerArea();
+  shoeDisplay.innerHTML = `Cards left:${shoe.shoe.length}`;
 }
+
+const placeChip = (id) => {
+  
+}
+
 
 const dealHand = () => {
   let dealtToPlayer = [];
@@ -231,17 +250,12 @@ const dealHand = () => {
   console.log(hand);
   updateBoard();
   updateScores();
+  if (hand.natural) {
+    results[0].innerHTML = 'Natural'
+    return handResult()
+  }
+  return setTimeout(dealThirdCard, 1000);
 }
-
-const updateBoard = () => {
-  boards[0].innerHTML = toPictureFormat(hand.playerHand);
-  boards[1].innerHTML = toPictureFormat(hand.computerHand);
-};
-
-const updateScores = () => {
-  scores[0].innerHTML = hand.playerScore;
-  scores[1].innerHTML = hand.computerScore;
-};
 
 const toPictureFormat = (array) => {
   let format = array.map(el=>el.split(' ')[0][0] + el.split(' ')[2][0]);
@@ -249,22 +263,54 @@ const toPictureFormat = (array) => {
     return a + `<img src="./imgs/poker-super-qr/${b}.svg">`
   }, '');
 }
+const updateBoard = () => {
+  boards[0].innerHTML = toPictureFormat(hand.playerHand);
+  boards[1].innerHTML = toPictureFormat(hand.computerHand);
+  shoeDisplay.innerHTML = `Cards left:${shoe.shoe.length}`;
+};
+
+const updateScores = () => {
+  scores[0].innerHTML = hand.playerScore;
+  scores[1].innerHTML = hand.computerScore;
+};
+
+const updateResults = () => {
+  results[1].innerHTML = hand.winner;
+}
+
+const updatePlayerArea = () => {
+  playerArea[0].innerHTML = player.playerName;
+  playerArea[1].innerHTML = player.bankroll;
+};
 
 const dealThirdCard = () => {
-  if (!hand.natural) {
     console.log(hand.thirdCardPlayer());
     if (hand.thirdCardPlayer()){
       hand.playerHand.push(shoe.dealACard());
-      updateBoard();
-      updateScores();
     }
-    console.log(hand.thirdCardComputer());
     if (hand.thirdCardComputer()){
       hand.computerHand.push(shoe.dealACard());
-      updateBoard();
-      updateScores();
     }
-
-  } else {console.log('natural')}
   console.log(hand, shoe);
-}
+  updateBoard();
+  updateScores();
+  handResult();
+} 
+const handResult = () => {
+  console.log(hand.winner)
+  updateResults();
+  // payout bets
+};
+
+
+const clearBoard = () => {
+  scores.forEach(e=>e.innerHTML='');
+  boards.forEach(e=>e.innerHTML='');
+  results.forEach(e=>e.innerHTML='');
+};
+
+const resetForNextHand = () => {
+  hand = new Hand;
+  console.log(player, hand, shoe);
+  clearBoard();
+};

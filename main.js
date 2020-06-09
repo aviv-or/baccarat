@@ -203,8 +203,8 @@ const dealHand = () => {
   hand = new Hand(dealtToPlayer, dealToComputer);
   console.log(hand);
   console.log(boards);
-  boards[0].innerHTML = hand.playerHand;
-  boards[1].innerHTML = hand.computerHand;
+  boards[0].innerHTML = toPictureFormat(hand.playerHand);
+  boards[1].innerHTML = toPictureFormat(hand.computerHand);
   updateScores();
 }
 
@@ -212,3 +212,10 @@ const updateScores = () => {
   scores[0].innerHTML = hand.playerScore();
   scores[1].innerHTML = hand.computerScore();
 };
+
+const toPictureFormat = (array) => {
+  let format = array.map(el=>el.split(' ')[0][0] + el.split(' ')[2][0]);
+  return format.reduce((a,b)=>{
+    return a + `<img src="./imgs/poker-super-qr/${b}.svg">`
+  }, '');
+}

@@ -160,6 +160,8 @@ class Shoe {
 const start = document.getElementById('start');
 const dealButton = document.getElementById('deal-button');
 
+const dtc = document.getElementById('dtc');
+
 const boards = Array.from(document.querySelectorAll('.boards > div'));
 const scores = Array.from(document.querySelectorAll('.scores > div'));
 
@@ -182,7 +184,9 @@ dealButton.addEventListener('click', () => {
   //some display stuff
 })
 
-
+dtc.addEventListener('click', () => {
+  dealThirdCard();
+})
 //
 
 const startGame = (playerName) => {
@@ -202,7 +206,6 @@ const dealHand = () => {
   }
   hand = new Hand(dealtToPlayer, dealToComputer);
   console.log(hand);
-  console.log(boards);
   boards[0].innerHTML = toPictureFormat(hand.playerHand);
   boards[1].innerHTML = toPictureFormat(hand.computerHand);
   updateScores();
@@ -218,4 +221,11 @@ const toPictureFormat = (array) => {
   return format.reduce((a,b)=>{
     return a + `<img src="./imgs/poker-super-qr/${b}.svg">`
   }, '');
+}
+
+const dealThirdCard = () => {
+  hand.playerHand.push(shoe.dealACard());
+  boards[0].innerHTML = toPictureFormat(hand.playerHand);
+  updateScores();
+
 }

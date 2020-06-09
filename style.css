@@ -13,8 +13,8 @@ body {
 
 body main {
   margin: 0 auto;
-  height: 90%;
-  width: 90%;
+  height: 80%;
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -76,6 +76,11 @@ body main section.boards {
 
 body main section.boards div {
   width: 40%;
+}
+
+body main section.boards div img {
+  height: 70px;
+  width: 50px;
 }
 
 body main section div {

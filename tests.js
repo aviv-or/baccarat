@@ -124,12 +124,3 @@ let testCardsArray = ['Ace of Hearts', '4 of Clubs']
 
 console.log()
 
-const toPictureFormat = (array) => {
-  return array.map(el=>{
-    return el.split(' ')[0][0] + el.split(' ')[2][0];
-  })
-}
-
-toPictureFormat(testCardsArray).reduce((a,b)=>{
-  return a + `<img src="./imgs/${b}">`
-}, '')

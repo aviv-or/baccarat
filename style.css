@@ -104,6 +104,21 @@ body main section.boards div img {
   width: 50px;
 }
 
+body main section.player-area div.chips-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+body main section.player-area div.chips-area i.selected {
+  color: ghostwhite;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
 body main section div {
   border: 2px solid #051a7a;
 }

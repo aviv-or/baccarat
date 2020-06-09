@@ -194,9 +194,16 @@ const shoeDisplay = document.getElementById('shoe');
 const results = Array.from(document.querySelectorAll('.results > div'));
 const boards = Array.from(document.querySelectorAll('.boards > div'));
 const scores = Array.from(document.querySelectorAll('.scores > div'));
-const playerArea = Array.from(document.querySelectorAll('.player-area > div'))
+const playerArea = Array.from(document.querySelectorAll('.player-area > div'));
+const chipsArea = Array.from(document.querySelectorAll('.chips-area > i'));
 
 const nextHand = document.getElementById('next-hand');
+
+const boardBets = [
+  document.getElementById('player-bet'),
+  document.getElementById('banker-bet'),
+  document.getElementById('tie-bet'),
+]
 
 let player;
 let shoe;
@@ -220,12 +227,28 @@ dealButton.addEventListener('click', () => {
 nextHand.addEventListener('click', () => {
   resetForNextHand();
 })
+
+chipsArea.forEach(e=>{
+  e.addEventListener('click', () => {
+    if (e.classList.contains('selected')) {
+      e.classList.remove('selected')
+    } else {
+      e.classList.add('selected')
+    }
+  })
+});
+
+boardBets.forEach(e=>{
+  e.addEventListener('click', () => {
+    placeChip(e.id);
+  })
+});
 //
 
 const startGame = (playerName, deckSize) => {
   openingScreen.style.display = 'none';
   mainGame.style.display = 'flex';
-  player = new Player(playerName, deckSize);
+  player = new Player(playerName, 1000);
   shoe = new Shoe(deckSize);
   shoe.dealADeck();
   shoe.createShoe();
@@ -235,7 +258,7 @@ const startGame = (playerName, deckSize) => {
 }
 
 const placeChip = (id) => {
-  
+  console.log(id);
 }
 
 
@@ -259,10 +282,9 @@ const dealHand = () => {
 
 const toPictureFormat = (array) => {
   let format = array.map(el=>el.split(' ')[0][0] + el.split(' ')[2][0]);
-  return format.reduce((a,b)=>{
-    return a + `<img src="./imgs/poker-super-qr/${b}.svg">`
-  }, '');
+  return format.reduce((a,b)=>{ return a + `<img src="./imgs/poker-super-qr/${b}.svg">` }, '');
 }
+
 const updateBoard = () => {
   boards[0].innerHTML = toPictureFormat(hand.playerHand);
   boards[1].innerHTML = toPictureFormat(hand.computerHand);
@@ -279,8 +301,8 @@ const updateResults = () => {
 }
 
 const updatePlayerArea = () => {
-  playerArea[0].innerHTML = player.playerName;
-  playerArea[1].innerHTML = player.bankroll;
+  playerArea[1].innerHTML = player.playerName;
+  playerArea[2].innerHTML = player.bankroll;
 };
 
 const dealThirdCard = () => {

@@ -69,7 +69,17 @@ body {
             width: 50px;
           }
         }
-        
+      }
+
+      &.player-area{
+        div.chips-area{
+          display:flex;
+          justify-content: space-evenly;
+          i.selected{
+            color: ghostwhite;
+            transform: scale(1.2);
+          }
+        }
       }
 
       div {

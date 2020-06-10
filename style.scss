@@ -126,9 +126,12 @@ body {
         
         &.previous-hands{
           float: left;
+          white-space: nowrap;
           overflow: hidden;
           width: 100px;
           border: 2px solid yellow;
+          text-align: right;
+          text-align-last: right;
         }
 
         &.main-bets {

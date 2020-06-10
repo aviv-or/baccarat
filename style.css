@@ -178,9 +178,12 @@ body main section div {
 
 body main section div.previous-hands {
   float: left;
+  white-space: nowrap;
   overflow: hidden;
   width: 100px;
   border: 2px solid yellow;
+  text-align: right;
+  text-align-last: right;
 }
 
 body main section div.main-bets {

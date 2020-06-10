@@ -121,16 +121,18 @@ class Hand {
 
   payoutBets(){
     let winner = this.winner.split(' ')[0].toLowerCase();
-    if (winner === 'player') { this.playerBetPay(); }
-    if (winner === 'banker') { this.bankerBetPay(); }
-    if (winner === 'tie') { this.tieBetPay(); }
+    console.log(winner);
+
+    ['player', 'banker', 'tie'].forEach(e=>{
+      e === winner ? this[`${e}BetPay`]() : this[`${e}Bet`] = 0
+    })
+
   }
 
   resetBet(){
     this.playerBet = 0;
     this.bankerBet = 0;
     this.tieBet = 0;
-    
   }
 
   readScore(array) {
@@ -182,7 +184,7 @@ class Hand {
   }
 
   get winner() {
-    return this.playerScore > this.computerScore ? 'Player Wins' :  this.computerScore > this.playerScore ? 'Computer Wins' : 'Tie';
+    return this.playerScore > this.computerScore ? 'Player Wins' :  this.computerScore > this.playerScore ? 'Banker Wins' : 'Tie';
   }
 
 }
@@ -440,7 +442,7 @@ const handResult = () => {
   // let winningBet = `${hand.winner.split(' ')[0].toLowerCase()}BetPay`
   hand.payoutBets();
   setTimeout(transferMoneyToWinner, 2000);
-  setTimeout(hand.resetBet, 2000);
+  // setTimeout(hand.resetBet, 3000);
   updatePlayerArea();
   updateResults();
   updateBets();

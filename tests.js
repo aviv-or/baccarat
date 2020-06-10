@@ -127,3 +127,6 @@ console.log()
 let doobie;
 
 console.log(!doobie);
+
+
+console.log(`Player Wins`.split(' ')[0].toLowerCase())

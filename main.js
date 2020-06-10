@@ -90,6 +90,11 @@ class Hand {
     this._playerBet = newSize;
   }
 
+  playerBetPay(){
+    return this.playerBet *= 2;
+
+  }
+
   get bankerBet() {
     return this._bankerBet;
   }
@@ -98,12 +103,34 @@ class Hand {
     this._bankerBet = newSize;
   }
 
+  bankerBetPay(){
+    return this.bankerBet *= 2;
+  }
+
   get tieBet() {
     return this._tieBet;
   }
 
   set tieBet(newSize) {
     this._tieBet = newSize;
+  }
+
+  tieBetPay(){
+    return this.tieBet *= 11
+  }
+
+  payoutBets(){
+    let winner = this.winner.split(' ')[0].toLowerCase();
+    if (winner === 'player') { this.playerBetPay(); }
+    if (winner === 'banker') { this.bankerBetPay(); }
+    if (winner === 'tie') { this.tieBetPay(); }
+  }
+
+  resetBet(){
+    this.playerBet = 0;
+    this.bankerBet = 0;
+    this.tieBet = 0;
+    
   }
 
   readScore(array) {
@@ -259,8 +286,7 @@ nextHand.addEventListener('click', () => {
 
 chipsArea.forEach(e=>{
   e.addEventListener('click', () => {
-    let alreadySelected = chipsArea.filter(e=>{return e.classList.contains('selected')})
-    alreadySelected.forEach(e=>{e.classList.remove('selected')}); 
+    unSelectAll();
     if (e.classList.contains('selected')) {
       e.classList.remove('selected')
     } else {
@@ -294,15 +320,12 @@ const placeChip = (id) => {
   val = Number(chipsArea.find(e=>e.classList.contains('selected')).innerHTML);
   hand[id] += val;
   player.bankroll -= val;
-  console.log(hand);
   showDealButton();
   updatePlayerArea();
-
+  updateBets();
 }
 
-
-const dealHand = () => {
-  hideDealButton();
+const createHands= () => {
   let dealtToPlayer = [];
   let dealToComputer = [];
   for (let i=0;i<2;i++){
@@ -311,6 +334,12 @@ const dealHand = () => {
   }
   hand.playerHand = dealtToPlayer;
   hand.computerHand = dealToComputer;
+};
+
+const dealHand = () => {
+  unSelectAll();
+  hideDealButton();
+  createHands();
   updateBoard();
   updateScores();
   if (hand.natural) {
@@ -335,6 +364,9 @@ const toggleSelected = (id) => {
   }
 }
 
+const unSelectAll = () => {
+  chipsArea.forEach(e=>{e.classList.remove('selected')})
+};
 
 const showDealButton = () => {
   dealButton.style.display = 'block';
@@ -350,6 +382,12 @@ const hideDealButton = () => {
 
 const hideNextHandButton = () => {
   nextHand.style.display = 'none';
+};
+
+const updateBets =  () => {
+  boardBets[0].innerHTML = hand.playerBet;
+  boardBets[1].innerHTML = hand.bankerBet;
+  boardBets[2].innerHTML = hand.tieBet;
 };
 
 const updateBoard = () => {
@@ -372,6 +410,17 @@ const updatePlayerArea = () => {
   playerArea[2].innerHTML = player.bankroll;
 };
 
+const transferMoneyToWinner = () => {
+  boardBets.forEach(e=>{
+    let val = Number(e.innerHTML);
+    if (val) {
+      player.bankroll += val;
+      e.innerHTML = '0';
+    }
+  })
+  updatePlayerArea();
+};
+
 const dealThirdCard = () => {
     console.log(hand.thirdCardPlayer());
     if (hand.thirdCardPlayer()){
@@ -385,11 +434,17 @@ const dealThirdCard = () => {
   updateScores();
   handResult();
 } 
+
 const handResult = () => {
   console.log(hand.winner)
+  // let winningBet = `${hand.winner.split(' ')[0].toLowerCase()}BetPay`
+  hand.payoutBets();
+  setTimeout(transferMoneyToWinner, 2000);
+  setTimeout(hand.resetBet, 2000);
+  updatePlayerArea();
   updateResults();
+  updateBets();
   showNextHandButton();
-  // payout bets
 };
 
 const clearBoard = () => {
@@ -398,6 +453,8 @@ const clearBoard = () => {
   results.forEach(e=>e.innerHTML='');
   hideDealButton();
   hideNextHandButton();
+  updatePlayerArea();
+  updateBets();
 };
 
 const resetForNextHand = () => {

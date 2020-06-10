@@ -22,7 +22,7 @@ const boards = Array.from(document.querySelectorAll('.boards > div'));
 const scores = Array.from(document.querySelectorAll('.scores > div'));
 const playerArea = Array.from(document.querySelectorAll('.player-area > div'));
 const chipsArea = Array.from(document.querySelectorAll('.chips-area > i'));
-
+console.log(chipsArea);
 const nextHand = document.getElementById('next-hand');
 
 const boardBets = [
@@ -99,7 +99,7 @@ const startGame = (playerName, deckSize) => {
 
 const placeChip = (id) => {
   id = `${id.split('-')[0]}Bet`;
-  let val = Number(chipsArea.find(e=>e.classList.contains('selected')).innerHTML);
+  let val = Number(chipsArea.find(e=>e.classList.contains('selected')).firstElementChild.alt);
   console.log(val)
   if (player.bankroll > 0) {
     hand[id] += val;

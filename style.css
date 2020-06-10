@@ -224,10 +224,16 @@ body main section div.main-bets {
 }
 
 body main section div.main-bets div {
-  width: 100px;
-  height: 80px;
+  width: 130px;
+  height: 120px;
   border: 2px solid white;
   border-radius: 5px;
+  overflow: hidden;
+}
+
+body main section div.main-bets div img {
+  height: 15px;
+  width: 20px;
 }
 
 body main section div.tie {
@@ -237,6 +243,11 @@ body main section div.tie {
   width: 70px;
   border: 2px solid white;
   border-radius: 5px;
+}
+
+body main section div.tie img {
+  height: 15px;
+  width: 20px;
 }
 
 .heartbeat {

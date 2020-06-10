@@ -32,6 +32,19 @@ export default class Hand {
     return format.reduce((a,b)=>{ return a + `<img src="./imgs/poker-super-qr/${b}.svg">` }, '');
   }
 
+  addChipsImages(num) {
+    let total = num;
+    let array = [];
+    [100,25,5].forEach(e=>{
+      while(total-e>=0){
+        array.push(e);
+        total-=e;
+      }
+    });
+    return array.reduce((a,b)=>{return a + `<img src="./imgs/pc/${b}st.jpg">` }, '');
+  }
+
+
   get playerBet() {
     return this._playerBet;
   }
@@ -113,7 +126,6 @@ export default class Hand {
 
   get natural() {
     return this.playerScore > 7 || this.computerScore > 7 ? true : false
-
   }
 
   thirdCardPlayer() {

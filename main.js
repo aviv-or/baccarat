@@ -157,9 +157,12 @@ const hideNextHandButton = () => {
 };
 
 const updateBets =  () => {
-  boardBets[0].innerHTML = hand.playerBet;
-  boardBets[1].innerHTML = hand.bankerBet;
-  boardBets[2].innerHTML = hand.tieBet;
+  // boardBets[0].innerHTML = hand.playerBet;
+  // boardBets[1].innerHTML = hand.bankerBet;
+  // boardBets[2].innerHTML = hand.tieBet;
+  boardBets[0].innerHTML = hand.playerBet + `<br>` + hand.addChipsImages(hand.playerBet);
+  boardBets[1].innerHTML = hand.bankerBet + `<br>` + hand.addChipsImages(hand.bankerBet);
+  boardBets[2].innerHTML = hand.tieBet + `<br>` + hand.addChipsImages(hand.tieBet);
 };
 
 const updateBoard = () => {
@@ -197,10 +200,9 @@ const giveShadowDrop = (id) => {
     }, 2000)
 }
 
-
 const transferMoneyToWinner = () => {
   boardBets.forEach(e=>{
-    let val = Number(e.innerHTML);
+    let val = Number(e.innerHTML.split('<')[0]);
     if (val) {
       player.bankroll += val;
       e.innerHTML = '0';

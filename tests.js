@@ -175,3 +175,25 @@ console.log(!doobie);
 
 
 console.log(`Player Wins`.split(' ')[0].toLowerCase())
+
+
+//
+
+
+
+// side images algorhythm 
+
+
+const decodingTheScore = (num)=>{
+  let total = num;
+  let array = [];
+  [100,25,5].forEach(e=>{
+    while(total-e>=0){
+      array.push(e);
+      total-=e;
+    }
+  })
+  return array
+};
+
+console.log(decodingTheScore(375));

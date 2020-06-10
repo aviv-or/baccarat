@@ -196,6 +196,7 @@ class Shoe {
     this.deck = [];
     this.suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades'];
     this.cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
+    this.winnerLog = [];
   }
 
   dealADeck() {
@@ -236,6 +237,14 @@ class Shoe {
     return this.shoe.shift()
   }
 
+  get winnerLog() {
+    return this._winnerLog;
+  }
+
+  set winnerLog(winnerLog) {
+    this._winnerLog = winnerLog;
+  }
+
 }
 
 
@@ -248,6 +257,11 @@ const openingScreen = document.getElementById('opening-screen');
 const mainGame = document.querySelector('main');
 const dealButton = document.getElementById('deal-button');
 const shoeDisplay = document.getElementById('shoe');
+const previousWinners = document.getElementById('previous-hands');
+const outOfMoney = document.getElementById('out-of-money');
+const playAgainButton = document.getElementById('retry');
+
+
 
 const results = Array.from(document.querySelectorAll('.results > div'));
 const boards = Array.from(document.querySelectorAll('.boards > div'));
@@ -288,10 +302,10 @@ nextHand.addEventListener('click', () => {
 
 chipsArea.forEach(e=>{
   e.addEventListener('click', () => {
-    unSelectAll();
-    if (e.classList.contains('selected')) {
-      e.classList.remove('selected')
+    if (nextHand.style.display === 'block') {
+      return unSelectAll();
     } else {
+      unSelectAll();
       e.classList.add('selected')
     }
   })
@@ -302,7 +316,24 @@ boardBets.forEach(e=>{
     placeChip(e.id);
   })
 });
+
+playAgainButton.addEventListener('click', ()=>{
+  retryGame();
+});
+
+
+
+
+
+
+
+
+
+
+
+
 //
+
 
 const startGame = (playerName, deckSize) => {
   openingScreen.style.display = 'none';
@@ -320,11 +351,16 @@ const startGame = (playerName, deckSize) => {
 const placeChip = (id) => {
   id = `${id.split('-')[0]}Bet`
   val = Number(chipsArea.find(e=>e.classList.contains('selected')).innerHTML);
-  hand[id] += val;
-  player.bankroll -= val;
-  showDealButton();
-  updatePlayerArea();
-  updateBets();
+  console.log(val)
+  if (player.bankroll > 0) {
+    hand[id] += val;
+    player.bankroll -= val;
+    showDealButton();
+    updatePlayerArea();
+    updateBets();
+  } else {
+    noMoneyAlert();
+  }
 }
 
 const createHands= () => {
@@ -354,16 +390,6 @@ const dealHand = () => {
 const toPictureFormat = (array) => {
   let format = array.map(el=>el.split(' ')[0][0] + el.split(' ')[2][0]);
   return format.reduce((a,b)=>{ return a + `<img src="./imgs/poker-super-qr/${b}.svg">` }, '');
-}
-
-const toggleSelected = (id) => {
-  console.log(id);
-  
-  if (id.classList.includes('selected')) {
-    id.classList.remove('selected')
-  } else {
-    id.classList.add('selected')
-  }
 }
 
 const unSelectAll = () => {
@@ -396,6 +422,7 @@ const updateBoard = () => {
   boards[0].innerHTML = toPictureFormat(hand.playerHand);
   boards[1].innerHTML = toPictureFormat(hand.computerHand);
   shoeDisplay.innerHTML = `Cards left:${shoe.shoe.length}`;
+  previousWinners.innerHTML += shoe.winnerLog;
 };
 
 const updateScores = () => {
@@ -439,14 +466,17 @@ const dealThirdCard = () => {
 
 const handResult = () => {
   console.log(hand.winner)
-  // let winningBet = `${hand.winner.split(' ')[0].toLowerCase()}BetPay`
   hand.payoutBets();
   setTimeout(transferMoneyToWinner, 2000);
-  // setTimeout(hand.resetBet, 3000);
   updatePlayerArea();
   updateResults();
   updateBets();
-  showNextHandButton();
+  if (player.bankroll === 0) {
+    return outOfMoneyScreen();
+  } else {
+    showNextHandButton();
+    updateBoard();
+  }
 };
 
 const clearBoard = () => {
@@ -460,7 +490,19 @@ const clearBoard = () => {
 };
 
 const resetForNextHand = () => {
+  let forLog = hand.winner[0];
+  shoe.winnerLog += ` ${forLog[0]}`;
   hand = new Hand;
   console.log(player, hand, shoe);
   clearBoard();
+};
+
+const outOfMoneyScreen = () => {
+  outOfMoney.style.display = 'flex';
+  mainGame.style.display = 'none';
+}
+
+const retryGame = () => {
+  outOfMoney.style.display = 'none';
+  openingScreen.style.display = 'flex';
 };

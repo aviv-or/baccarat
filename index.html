@@ -17,51 +17,58 @@
     <input type="radio" id="four-decks" name="decks" value="4">
     <label for="six-decks">Six:</label>
     <input type="radio" id="six-decks" name="decks" value="6">
+    <br>
     <label for="eight-decks">Eight:</label>
     <input type="radio" id="eight-decks" name="decks" value="8">
   </form>
     <div class="btn" id="start">Start</div>
   </section>
 
-<main class="main-game-board">
-<section>
-  <div class="shoe" id="shoe">Shoe</div>
-  <h2>Baccarrat</h2>
-</section>
+  <main class="main-game-board">
+    <section class="top-flex">
+      <div class="previous-hands" id="previous-hands">Past:</div>
+      <h2>Baccarrat</h2>
+      <div class="shoe" id="shoe">Shoe</div>
+    </section>
 
-<section class="results">
-  <div id="natural-status"></div>
-  <div id="winner-status"></div>
-</section>
+    <section class="results">
+      <div id="natural-status"></div>
+      <div id="winner-status"></div>
+    </section>
 
-<section class="scores">
-  <div id="player-score">score</div>
-  <div id="banker-score">score</div>
-</section>
+    <section class="scores">
+      <div id="player-score">score</div>
+      <div id="banker-score">score</div>
+    </section>
 
-<section class="boards">
-  <div id="player-board">player board</div>
-  <div id="banker-board">computer board</div>
-</section>
+    <section class="boards">
+      <div id="player-board">player board</div>
+      <div id="banker-board">computer board</div>
+    </section>
 
-<section class="board-bets">
-  <div class="tie" id="tie-bet">tie bet </div>
-  <div class="main-bets">
-    <div class="bets" id="player-bet">player bet </div>
-    <div class="bets" id="banker-bet">computer bet </div>
-  </div>
-</section>
+    <section class="board-bets">
+      <div class="tie" id="tie-bet">tie bet </div>
+      <div class="main-bets">
+        <div class="bets" id="player-bet">player bet </div>
+        <div class="bets" id="banker-bet">computer bet </div>
+      </div>
+    </section>
 
-<section class="board-buttons">
-  <div class="deal-button btn" id="deal-button">DEAL</div>
-  <div class="tie btn" id="next-hand">Next hand</div>
-</section>
-<section class="player-area">
-  <div class="chips-area"><i>100</i><i>25</i><i>5</i></div>
-  <div id="name"></div>
-  <div id="bank-screen"></div>
-</section>
-</main>
+    <section class="board-buttons">
+      <div class="deal-button btn" id="deal-button">DEAL</div>
+      <div class="tie btn" id="next-hand">Next hand</div>
+    </section>
+    <section class="player-area">
+      <div class="chips-area"><i>100</i><i>25</i><i>5</i></div>
+      <div id="name"></div>
+      <div id="bank-screen"></div>
+    </section>
+  </main>
+
+  <section class="out-of-money" id="out-of-money">
+    <span>You're out of money...</span>
+    <div class="btn" id="retry">Play again?</div>
+  </section>
 
 <script src="main.js"></script>
 </body>

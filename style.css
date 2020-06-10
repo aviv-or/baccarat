@@ -3,6 +3,7 @@
   margin: 0px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-align: center;
+  font-size: 18px;
 }
 
 body {
@@ -21,22 +22,62 @@ body {
           justify-content: center;
 }
 
-body #deal-button, body #next-hand {
+body #deal-button, body #next-hand, body #out-of-money {
   display: none;
+}
+
+body #opening-screen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+}
+
+body #opening-screen input#player-name {
+  height: 30px;
+}
+
+body #opening-screen p {
+  margin: 10px;
+}
+
+body #opening-screen label, body #opening-screen input {
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+body #opening-screen #start {
+  margin-top: 10px;
+}
+
+body #out-of-money {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 body .btn {
   width: 100px;
   height: 35px;
   background-color: lightgray;
-  margin: 0 auto;
+  margin: 0px auto;
   padding-top: 10px;
 }
 
 body main {
   margin: 0 auto;
-  height: 85%;
-  width: 85%;
+  height: 90%;
+  width: 90%;
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -47,14 +88,17 @@ body main {
   border: 2px solid red;
 }
 
-body main section.opening-screen {
+body main section.top-flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 0 auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body main section.top-flex.shoe {
+  float: right;
 }
 
 body main section.results {
@@ -80,7 +124,7 @@ body main section.scores {
           justify-content: space-evenly;
   -ms-flex-line-pack: center;
       align-content: center;
-  height: 10%;
+  height: 5%;
 }
 
 body main section.scores div {
@@ -123,12 +167,19 @@ body main section.player-area div.chips-area i.selected {
           transform: scale(1.2);
 }
 
+body main section.board-buttons {
+  height: 60px;
+}
+
 body main section div {
   border: 2px solid #051a7a;
 }
 
-body main section div.shoe {
-  float: right;
+body main section div.previous-hands {
+  float: left;
+  overflow: hidden;
+  width: 100px;
+  border: 2px solid yellow;
 }
 
 body main section div.main-bets {

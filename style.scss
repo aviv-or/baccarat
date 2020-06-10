@@ -3,6 +3,7 @@
   margin: 0px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-align: center;
+  font-size: 18px;
 }
 
 
@@ -14,23 +15,48 @@ body {
   flex-direction: column;
   justify-content: center;
   
-  #deal-button, #next-hand {
+  #deal-button, #next-hand, #out-of-money {
     display: none;
   }
 
+  #opening-screen {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+    input#player-name{
+      height: 30px;
+    }
+    p {
+      margin: 10px;
+    }
+    label, input {
+      padding: 5px;
+      margin-bottom: 5px;
+    }
+    #start{
+      margin-top: 10px;
+    }
+  }
 
-  .btn {
+  #out-of-money {
+      flex-direction: column;
+  }
+
+    .btn {
     width: 100px;
     height: 35px;
     background-color: lightgray;
-    margin: 0 auto;
+    margin: 0px auto;
     padding-top: 10px;
   }
   main {
     
     margin: 0 auto;
-    height: 85%;
-    width: 85%;
+    height: 90%;
+    width: 90%;
     display: none;
     flex-direction: column;
     justify-content: space-around;
@@ -38,10 +64,13 @@ body {
 
     section {
 
-      &.opening-screen {
+      &.top-flex{
         display: flex;
-        justify-content: center;
-        margin: 0 auto;
+      
+        justify-content: space-between;
+        &.shoe{
+          float: right;
+        }
         
       }
 
@@ -57,7 +86,7 @@ body {
         display: flex;
         justify-content: space-evenly;
         align-content: center;
-        height: 10%;
+        height: 5%;
         div{
           width: 40%;
         }
@@ -87,11 +116,20 @@ body {
         }
       }
 
+      &.board-buttons {
+        height: 60px;
+      }
+
       div {
         border: 2px solid rgb(5, 26, 122);
-        &.shoe{
-          float: right;
+        
+        &.previous-hands{
+          float: left;
+          overflow: hidden;
+          width: 100px;
+          border: 2px solid yellow;
         }
+
         &.main-bets {
           display: flex;
           justify-content: space-evenly;

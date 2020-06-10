@@ -183,6 +183,21 @@ const updatePlayerArea = () => {
   playerArea[2].innerHTML = player.bankroll;
 };
 
+const giveGoldHeartbeat = (constant) => {
+  constant.classList.add('heartbeat');
+  setTimeout(()=>{
+  constant.classList.remove('heartbeat');
+  }, 2000)
+};
+
+const giveShadowDrop = (id) => {
+  document.getElementById(id).classList.add('shadow-drop-2-bottom');
+  setTimeout(()=>{
+    document.getElementById(id).classList.remove('shadow-drop-2-bottom');
+    }, 2000)
+}
+
+
 const transferMoneyToWinner = () => {
   boardBets.forEach(e=>{
     let val = Number(e.innerHTML);
@@ -192,6 +207,7 @@ const transferMoneyToWinner = () => {
     }
   })
   updatePlayerArea();
+  giveGoldHeartbeat(playerArea[2]);
 };
 
 const dealThirdCard = () => {
@@ -209,7 +225,10 @@ const dealThirdCard = () => {
 } 
 
 const handResult = () => {
-  console.log(hand.winner)
+  console.log(hand.winner);
+  let winnerArea = `${hand.winner.split(' ')[0].toLowerCase()}-bet`
+  console.log(winnerArea);
+  giveShadowDrop(winnerArea);
   hand.payoutBets();
   setTimeout(transferMoneyToWinner, 2000);
   updatePlayerArea();

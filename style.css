@@ -214,13 +214,22 @@ body main section div.previous-hands {
   text-align-last: right;
 }
 
-body main section div.main-bets {
+body main section div.spans {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  color: whitesmoke;
+}
+
+body main section div.main-bets {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 body main section div.main-bets div {

@@ -67,7 +67,8 @@ body #out-of-money {
 }
 
 body .btn {
-  width: 100px;
+  min-width: 100px;
+  max-width: 50%;
   height: 35px;
   background-color: lightgray;
   margin: 0px auto;

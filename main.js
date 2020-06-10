@@ -1,62 +1,4 @@
 
-/*
-What I need:
-
-Shoe class                              ------------------    yes
-Player class                              ------------------    yes
-
-player choose bet size 
-
-.shift() card to player and computer boards, twice
-
-scoring:                                        ------------------    yes
-1) 2-9 cards - the score equals Number(card.split('')[0])
-2) card[0] === - a the score equals 1
-3) else - the score equals 0
-add cards up, turn to string and chop of first digit, and turn back to number
-
-[third card rule] --- store on player object??      ------------------    yes
-
-
-
-------
-
-the game flow itself 
-
-start
-creates and shuffles the shoe - animation
-
-player chooses bet size and go.
-
-deals cards.
-
-wait.
-
-deals third card.
-
-wait.
-
-pays bets.
-
-
-*/
-
-// classes
-
-class Player {
-  constructor(playerName, bankroll) {
-    this.playerName = playerName;
-    this._bankroll = bankroll
-  }
-
-  get bankroll() {
-    return this._bankroll;
-  }
-
-  set bankroll(bankroll) {
-    this._bankroll = bankroll;
-  }
-}
 
 class Hand {
   constructor() {
@@ -247,6 +189,21 @@ class Shoe {
 
 }
 
+class Player {
+  constructor(playerName, bankroll) {
+    this.playerName = playerName;
+    this._bankroll = bankroll
+  }
+
+  get bankroll() {
+    return this._bankroll;
+  }
+
+  set bankroll(bankroll) {
+    this._bankroll = bankroll;
+  }
+}
+
 
 /*
 ----------- MAIN GAME CONTENT
@@ -260,8 +217,6 @@ const shoeDisplay = document.getElementById('shoe');
 const previousWinners = document.getElementById('previous-hands');
 const outOfMoney = document.getElementById('out-of-money');
 const playAgainButton = document.getElementById('retry');
-
-
 
 const results = Array.from(document.querySelectorAll('.results > div'));
 const boards = Array.from(document.querySelectorAll('.boards > div'));
@@ -320,12 +275,6 @@ boardBets.forEach(e=>{
 playAgainButton.addEventListener('click', ()=>{
   retryGame();
 });
-
-
-
-
-
-
 
 
 

@@ -195,7 +195,7 @@ body {
 
           div{
             width: 40%;
-            margin-top: 5px;
+            margin: 5px;
             height: 110px;
             border: 2px solid white;
             background-color: $transparent-background-colour;
@@ -210,7 +210,7 @@ body {
         &.tie {
           color:black;
           width: 20%;
-          margin: 0 auto;
+          margin: 5px auto;
           height: 50px;
           width: 70px;
           font-size: 16px;

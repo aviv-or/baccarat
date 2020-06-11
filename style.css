@@ -258,7 +258,7 @@ body main section div.main-bets {
 
 body main section div.main-bets div {
   width: 40%;
-  margin-top: 5px;
+  margin: 5px;
   height: 110px;
   border: 2px solid white;
   background-color: rgba(255, 255, 255, 0.144);
@@ -274,7 +274,7 @@ body main section div.main-bets div img {
 body main section div.tie {
   color: black;
   width: 20%;
-  margin: 0 auto;
+  margin: 5px auto;
   height: 50px;
   width: 70px;
   font-size: 16px;

@@ -211,12 +211,8 @@ const transferMoneyToWinner = () => {
 
 const dealThirdCard = () => {
     console.log(hand.thirdCardPlayer());
-    if (hand.thirdCardPlayer()){
-      hand.playerHand.push(shoe.dealACard());
-    }
-    if (hand.thirdCardComputer()){
-      hand.computerHand.push(shoe.dealACard());
-    }
+    if (hand.thirdCardPlayer()){ hand.playerHand.push(shoe.dealACard()); }
+    if (hand.thirdCardComputer()){ hand.computerHand.push(shoe.dealACard()); }
   console.log(hand, shoe);
   updateBoard();
   updateScores();
@@ -249,21 +245,21 @@ const clearBoard = () => {
 };
 
 const resetForNextHand = () => {
+  if (player.bankroll === 0) {
+    return outOfMoneyScreen();
+  } else {
   let forLog = hand.winner[0];
   shoe.winnerLog = 'Last: ' + `${forLog[0]} ` + shoe.winnerLog.slice(6);
   hand = new Hand;
   console.log(player, hand, shoe);
   clearBoard();
+  }
 };
 
 const outOfMoneyScreen = () => {
-  if (player.bankroll === 0) {
-    return setTimeout(outOfMoneyScreen, 3000);
-  } else {
   outOfMoney.style.display = 'flex';
   mainGame.style.display = 'none';
   }
-}
 
 const retryGame = () => {
   outOfMoney.style.display = 'none';

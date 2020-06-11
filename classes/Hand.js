@@ -24,12 +24,24 @@ export default class Hand {
 
   get toPictureFormatPlayer() {
     let format = this.playerHand.map(el=>el.split(' ')[0][0] + el.split(' ')[2][0]);
-    return format.reduce((a,b)=>{ return a + `<img src="./imgs/poker-super-qr/${b}.svg">` }, '');
+    return format.reduce((a,b,i)=>{ 
+      if (i<2) {
+      return a + `<img src="./imgs/poker-super-qr/${b}.svg">`
+    } else {
+      return a + `<img style="transform: rotate(90deg)" src="./imgs/poker-super-qr/${b}.svg">`
+    }
+     }, '');
   }
 
   get toPictureFormatComputer() {
     let format = this.computerHand.map(el=>el.split(' ')[0][0] + el.split(' ')[2][0]);
-    return format.reduce((a,b)=>{ return a + `<img src="./imgs/poker-super-qr/${b}.svg">` }, '');
+    return format.reduce((a,b,i)=>{ 
+      if (i<2) {
+      return a + `<img src="./imgs/poker-super-qr/${b}.svg">`
+    } else {
+      return a + `<img style="transform: rotate(90deg)" src="./imgs/poker-super-qr/${b}.svg">`
+    }
+     }, '');
   }
 
   addChipsImages(num) {

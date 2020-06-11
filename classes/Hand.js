@@ -53,7 +53,7 @@ export default class Hand {
         total-=e;
       }
     });
-    return array.reduce((a,b)=>{return a + `<img src="./imgs/pc/${b}st.jpg">` }, '');
+    return array.reduce((a,b)=>{return a + `<img src="./imgs/pc/${b}st.png">` }, '');
   }
 
 

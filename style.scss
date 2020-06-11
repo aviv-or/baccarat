@@ -62,7 +62,7 @@ body {
 
     .btn {
     min-width: 100px;
-    max-width:30%;
+    max-width:300px;
     max-height: 35px;
     background-color: lightgray;
     margin: 0px auto;
@@ -196,6 +196,7 @@ body {
           justify-content: space-evenly;
           color: whitesmoke;
           padding: 0px 25px;
+          width: 80%;
         }
 
         &.main-bets {
@@ -219,7 +220,7 @@ body {
         &.tie {
           color:black;
           width: 20%;
-          margin: 5px auto;
+          margin: 10px auto 5px auto;
           height: 50px;
           width: 70px;
           font-size: 16px;

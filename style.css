@@ -47,6 +47,10 @@ body #opening-screen input#player-name {
   height: 30px;
 }
 
+body #opening-screen h2 {
+  font-size: 25px;
+}
+
 body #opening-screen p {
   margin: 10px;
 }
@@ -93,6 +97,10 @@ body main {
   border-radius: 5px;
 }
 
+body main section h2 {
+  font-size: 25px;
+}
+
 body main section.top-flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -102,8 +110,10 @@ body main section.top-flex {
           justify-content: space-between;
 }
 
-body main section.top-flex.shoe {
+body main section.top-flex div.shoe {
   float: right;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.144);
 }
 
 body main section.results {
@@ -135,7 +145,6 @@ body main section.scores {
 body main section.scores div {
   width: 40%;
   border: 2px solid #ec7a7a;
-  background-color: rgba(255, 255, 255, 0.144);
   border-radius: 5px;
 }
 
@@ -154,7 +163,6 @@ body main section.boards {
 body main section.boards div {
   width: 40%;
   border: 2px solid #ec7a7a;
-  background-color: rgba(255, 255, 255, 0.144);
   border-radius: 5px;
 }
 
@@ -175,7 +183,9 @@ body main section.player-area {
 }
 
 body main section.player-area div.name-section {
+  border: 2px solid #051a7a;
   padding: 10px;
+  font-weight: 500;
 }
 
 body main section.player-area div.chips-area {
@@ -205,6 +215,11 @@ body main section.board-buttons {
   height: 50px;
 }
 
+body main section span {
+  color: white;
+  font-size: 16px;
+}
+
 body main section div.previous-hands {
   float: left;
   white-space: nowrap;
@@ -224,7 +239,7 @@ body main section div.span-and-tie {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   color: whitesmoke;
-  padding: 0px 5px;
+  padding: 0px 25px;
 }
 
 body main section div.main-bets {
@@ -255,6 +270,7 @@ body main section div.tie {
   margin: 0 auto;
   height: 50px;
   width: 70px;
+  font-size: 16px;
   border: 2px solid white;
   background-color: rgba(255, 255, 255, 0.144);
   border-radius: 5px;

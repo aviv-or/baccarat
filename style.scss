@@ -33,6 +33,9 @@ body {
     input#player-name{
       height: 30px;
     }
+    h2{
+      font-size: 25px;
+    }
     p {
       margin: 10px;
     }
@@ -71,13 +74,17 @@ body {
     border-radius: 5px;
 
     section {
-
+      h2{
+        font-size: 25px;
+      }
       &.top-flex{
         display: flex;
       
         justify-content: space-between;
-        &.shoe{
+        div.shoe{
           float: right;
+          border-radius: 5px;
+          background-color: $transparent-background-colour;
         }
         
       }
@@ -98,7 +105,6 @@ body {
         div{
           width: 40%;
           border: 2px solid $secondary-border-colour;
-          background-color: $transparent-background-colour;
           border-radius: 5px;
         }
       }
@@ -110,7 +116,7 @@ body {
         div{
           width: 40%;
           border: 2px solid $secondary-border-colour;
-          background-color: $transparent-background-colour;
+          // background-color: $transparent-background-colour;
           border-radius: 5px;
           img {
             height: 70px;
@@ -125,7 +131,9 @@ body {
         justify-content: space-evenly;
         flex-wrap: wrap;
         div.name-section{
+          border: 2px solid rgb(5, 26, 122);
           padding: 10px;
+          font-weight: 500;
    
         }
         div.chips-area{
@@ -151,6 +159,11 @@ body {
         height: 50px;
       }
 
+      span{
+        color:white;
+        font-size: 16px;
+      }
+
       div {
         // border: 2px solid rgb(5, 26, 122);
         
@@ -170,7 +183,7 @@ body {
           display:flex;
           justify-content: space-evenly;
           color: whitesmoke;
-          padding: 0px 5px;
+          padding: 0px 25px;
         }
 
         &.main-bets {
@@ -195,6 +208,7 @@ body {
           margin: 0 auto;
           height: 50px;
           width: 70px;
+          font-size: 16px;
           border: 2px solid white;
           background-color: $transparent-background-colour;
           border-radius: 5px;

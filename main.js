@@ -262,7 +262,7 @@ const clearBoard = () => {
 
 const resetForNextHand = () => {
   let forLog = hand.winner[0];
-  shoe.winnerLog = 'Last: ' + `${forLog[0]} ` + shoe.winnerLog.slice(6);
+  shoe.winnerLog = 'History:<br>' + ` ${forLog[0]}` + shoe.winnerLog.slice(12);
   hand = new Hand;
   clearBoard();
   console.log(player, hand, shoe);

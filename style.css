@@ -10,7 +10,8 @@
 body {
   height: 100vh;
   width: 100vw;
-  background-color: #169616;
+  background-image: url(./imgs/bg.jpg);
+  background-repeat: repeat;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -72,9 +73,14 @@ body #out-of-money {
           flex-direction: column;
 }
 
+body #retry {
+  margin-top: 10px;
+}
+
 body .btn {
   min-width: 100px;
-  max-width: 30%;
+  max-width: 300px;
+  width: 30%;
   max-height: 35px;
   background-color: lightgray;
   margin: 0px auto;
@@ -163,7 +169,7 @@ body main section.boards {
 
 body main section.boards div {
   width: 40%;
-  border: 2px solid #ec7a7a;
+  border: 2px solid #bdba26;
   border-radius: 5px;
 }
 
@@ -246,6 +252,8 @@ body main section div.span-and-tie {
           justify-content: space-evenly;
   color: whitesmoke;
   padding: 0px 25px;
+  width: 80%;
+  margin: 0 auto;
 }
 
 body main section div.main-bets {
@@ -275,7 +283,7 @@ body main section div.main-bets div img {
 body main section div.tie {
   color: black;
   width: 20%;
-  margin: 5px auto;
+  margin: 10px auto 5px auto;
   height: 50px;
   width: 70px;
   font-size: 16px;

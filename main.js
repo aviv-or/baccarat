@@ -246,8 +246,8 @@ const handResult = () => {
   updatePlayerArea();
   updateResults();
   updateBets();
-  showNextHandButton();
   updateBoard();
+  setTimeout(showNextHandButton, 2200)
 };
 
 const clearBoard = () => {
@@ -255,31 +255,29 @@ const clearBoard = () => {
   boards.forEach(e=>e.innerHTML='');
   results.forEach(e=>e.innerHTML='');
   hideDealButton();
-  hideNextHandButton();
   updatePlayerArea();
   updateBets();
   updateBoard();
 };
 
 const resetForNextHand = () => {
-  if (player.bankroll === 0) {
-    return outOfMoneyScreen();
-  } else {
   let forLog = hand.winner[0];
   shoe.winnerLog = 'Last: ' + `${forLog[0]} ` + shoe.winnerLog.slice(6);
   hand = new Hand;
-  console.log(player, hand, shoe);
   clearBoard();
-  }
+  console.log(player, hand, shoe);
+  hideNextHandButton();
+  if (player.bankroll === 0) { outOfMoneyScreen(); } 
 };
 
 const outOfMoneyScreen = () => {
   outOfMoney.style.display = 'flex';
   mainGame.style.display = 'none';
+  clearBoard();
   }
 
 const retryGame = () => {
-  outOfMoney.style.display = 'none';
   resetForNextHand();
+  outOfMoney.style.display = 'none';
   openingScreen.style.display = 'flex';
 };

@@ -28,7 +28,7 @@ export default class Hand {
       if (i<2) {
       return a + `<img src="./imgs/poker-super-qr/${b}.svg">`
     } else {
-      return a + `<img style="transform: rotate(90deg)" src="./imgs/poker-super-qr/${b}.svg">`
+      return a + `<br><img style="transform: rotate(90deg); margin-left: 15px" src="./imgs/poker-super-qr/${b}.svg">`
     }
      }, '');
   }
@@ -39,7 +39,7 @@ export default class Hand {
       if (i<2) {
       return a + `<img src="./imgs/poker-super-qr/${b}.svg">`
     } else {
-      return a + `<img style="transform: rotate(90deg)" src="./imgs/poker-super-qr/${b}.svg">`
+      return a + `<br><img style="transform: rotate(90deg); margin-left: 15px" src="./imgs/poker-super-qr/${b}.svg">`
     }
      }, '');
   }

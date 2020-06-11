@@ -78,9 +78,6 @@ playAgainButton.addEventListener('click', ()=>{
 
 
 
-
-
-
 //
 
 
@@ -190,7 +187,11 @@ const updateScores = () => {
 };
 
 const updateResults = () => {
-  results[1].innerHTML = hand.winner;
+  if (results[0].innerHTML) {results[0].innerHTML += `: ${hand.winner}`
+} else {
+
+  results[0].innerHTML += hand.winner;
+}
 }
 
 const updatePlayerArea = () => {

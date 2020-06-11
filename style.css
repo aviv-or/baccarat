@@ -158,7 +158,7 @@ body main section.boards {
           justify-content: space-evenly;
   -ms-flex-line-pack: center;
       align-content: center;
-  height: 22%;
+  height: 26%;
 }
 
 body main section.boards div {
@@ -168,8 +168,8 @@ body main section.boards div {
 }
 
 body main section.boards div img {
-  height: 77px;
-  width: 55px;
+  height: 72px;
+  width: 52px;
 }
 
 body main section.player-area {
@@ -399,6 +399,19 @@ body main section div.tie img {
     transform: translateZ(50px) translateY(-12px);
     -webkit-box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
     box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@media only screen and (max-width: 374px) {
+  * {
+    font-size: 14px;
+  }
+  body main section.player-area div.chips-area i img {
+    height: 35px;
+    width: 35px;
+  }
+  body main section div.main-bets div {
+    height: 85px;
   }
 }
 /*# sourceMappingURL=style.css.map */

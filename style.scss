@@ -10,9 +10,11 @@ $transparent-background-colour: rgba(255, 255, 255, 0.144);
   font-weight: 530;
 }
 
-// .blue-bg{
-//   background-color: lightblue;
-// }
+
+
+  &.blue-bg{
+    background-color: lightblue;
+  }
 
 body {
   height: 100vh;
@@ -27,6 +29,7 @@ body {
   }
 
   #opening-screen {
+    
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -50,6 +53,7 @@ body {
     #start{
       margin-top: 10px;
     }
+
   }
 
   #out-of-money {
@@ -77,6 +81,7 @@ body {
     border-radius: 5px;
 
     section {
+
       h2{
         font-size: 25px;
         margin: 0 auto;

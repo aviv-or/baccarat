@@ -16,6 +16,7 @@ const shoeDisplay = document.getElementById('shoe');
 const previousWinners = document.getElementById('previous-hands');
 const outOfMoney = document.getElementById('out-of-money');
 const playAgainButton = document.getElementById('retry');
+const audioOnPage = document.getElementById('audio');
 
 const results = Array.from(document.querySelectorAll('.results > div'));
 const boards = Array.from(document.querySelectorAll('.boards > div'));
@@ -118,6 +119,7 @@ const createHands= () => {
   for (let i=0;i<2;i++){
     dealtToPlayer.push(shoe.dealACard());
     dealToComputer.push(shoe.dealACard());
+    drawCardSound();
   }
   hand.playerHand = dealtToPlayer;
   hand.computerHand = dealToComputer;
@@ -154,6 +156,19 @@ const hideDealButton = () => {
 
 const hideNextHandButton = () => {
   nextHand.style.display = 'none';
+};
+
+const drawCardSound = () => {
+  let audio = document.createElement('audio');
+  audio.src = "./imgs/audio/deal.mp3";
+  audio.play();
+};
+
+
+const winRoundSound = () => {
+  let audio = document.createElement('audio');
+  audio.src = "./imgs/audio/win.mp3";
+  audio.play();
 };
 
 const updateBets =  () => {
@@ -201,6 +216,7 @@ const transferMoneyToWinner = () => {
   boardBets.forEach(e=>{
     let val = Number(e.innerHTML.split('<')[0]);
     if (val) {
+      winRoundSound();
       player.bankroll += val;
       e.innerHTML = '0';
       giveGoldHeartbeat(playerArea[2]);
@@ -210,9 +226,10 @@ const transferMoneyToWinner = () => {
 };
 
 const dealThirdCard = () => {
-    console.log(hand.thirdCardPlayer());
-    if (hand.thirdCardPlayer()){ hand.playerHand.push(shoe.dealACard()); }
-    if (hand.thirdCardComputer()){ hand.computerHand.push(shoe.dealACard()); }
+  console.log(hand.thirdCardPlayer());
+  if (hand.thirdCardPlayer()){ hand.playerHand.push(shoe.dealACard()); }
+  if (hand.thirdCardComputer()){ hand.computerHand.push(shoe.dealACard()); }
+  drawCardSound();
   console.log(hand, shoe);
   updateBoard();
   updateScores();

@@ -99,6 +99,7 @@ body main {
 
 body main section h2 {
   font-size: 25px;
+  margin: 0 auto;
 }
 
 body main section.top-flex {

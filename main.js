@@ -165,7 +165,7 @@ const updateBets =  () => {
 const updateBoard = () => {
   boards[0].innerHTML = hand.toPictureFormatPlayer
   boards[1].innerHTML = hand.toPictureFormatComputer
-  shoeDisplay.innerHTML = `Cards left:${shoe.shoe.length}`;
+  shoeDisplay.innerHTML = `Cards left:<br>${shoe.shoe.length}`;
   previousWinners.innerHTML = shoe.winnerLog
 };
 

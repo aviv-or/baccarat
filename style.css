@@ -3,7 +3,7 @@
   margin: 0px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 530;
 }
 
@@ -75,12 +75,13 @@ body .btn {
   background-color: lightgray;
   margin: 0px auto;
   padding: 10px;
+  cursor: pointer;
 }
 
 body main {
   margin: 0 auto;
-  height: 90%;
-  width: 90%;
+  height: 95%;
+  width: 95%;
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -88,7 +89,8 @@ body main {
           flex-direction: column;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  border: 2px solid #bdba26;
+  border: 3px solid #bdba26;
+  border-radius: 5px;
 }
 
 body main section.top-flex {
@@ -133,6 +135,7 @@ body main section.scores {
 body main section.scores div {
   width: 40%;
   border: 2px solid #ec7a7a;
+  background-color: rgba(255, 255, 255, 0.144);
   border-radius: 5px;
 }
 
@@ -151,6 +154,7 @@ body main section.boards {
 body main section.boards div {
   width: 40%;
   border: 2px solid #ec7a7a;
+  background-color: rgba(255, 255, 255, 0.144);
   border-radius: 5px;
 }
 
@@ -201,21 +205,18 @@ body main section.board-buttons {
   height: 50px;
 }
 
-body main section div {
-  border: 2px solid #051a7a;
-}
-
 body main section div.previous-hands {
   float: left;
   white-space: nowrap;
   overflow: hidden;
   width: 100px;
-  border: 2px solid yellow;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 0, 0.15);
   text-align: right;
   text-align-last: right;
 }
 
-body main section div.spans {
+body main section div.span-and-tie {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -223,6 +224,7 @@ body main section div.spans {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   color: whitesmoke;
+  padding: 0px 5px;
 }
 
 body main section div.main-bets {
@@ -237,6 +239,7 @@ body main section div.main-bets div {
   width: 130px;
   height: 120px;
   border: 2px solid white;
+  background-color: rgba(255, 255, 255, 0.144);
   border-radius: 5px;
   overflow: hidden;
 }
@@ -247,11 +250,13 @@ body main section div.main-bets div img {
 }
 
 body main section div.tie {
+  color: black;
   width: 20%;
   margin: 0 auto;
   height: 50px;
   width: 70px;
   border: 2px solid white;
+  background-color: rgba(255, 255, 255, 0.144);
   border-radius: 5px;
 }
 

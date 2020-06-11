@@ -1,11 +1,12 @@
 $secondary-border-colour: rgb(236, 122, 122);
+$transparent-background-colour: rgba(255, 255, 255, 0.144);
 
 *{
   padding: 0px;
   margin: 0px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 530;
 }
 
@@ -56,16 +57,18 @@ body {
     background-color: lightgray;
     margin: 0px auto;
     padding: 10px;
+    cursor: pointer;
   }
   main {
     
     margin: 0 auto;
-    height: 90%;
-    width: 90%;
+    height: 95%;
+    width: 95%;
     display: none;
     flex-direction: column;
     justify-content: space-around;
-    border: 2px solid rgb(189, 186, 38);
+    border: 3px solid rgb(189, 186, 38);
+    border-radius: 5px;
 
     section {
 
@@ -95,6 +98,7 @@ body {
         div{
           width: 40%;
           border: 2px solid $secondary-border-colour;
+          background-color: $transparent-background-colour;
           border-radius: 5px;
         }
       }
@@ -106,6 +110,7 @@ body {
         div{
           width: 40%;
           border: 2px solid $secondary-border-colour;
+          background-color: $transparent-background-colour;
           border-radius: 5px;
           img {
             height: 70px;
@@ -147,22 +152,25 @@ body {
       }
 
       div {
-        border: 2px solid rgb(5, 26, 122);
+        // border: 2px solid rgb(5, 26, 122);
         
         &.previous-hands{
           float: left;
           white-space: nowrap;
           overflow: hidden;
           width: 100px;
-          border: 2px solid yellow;
+          // border: 2px solid yellow;
+          border-radius: 5px;
+          background-color: rgba(255, 255, 0, 0.15);
           text-align: right;
           text-align-last: right;
         }
 
-        &.spans{
+        &.span-and-tie{
           display:flex;
           justify-content: space-evenly;
           color: whitesmoke;
+          padding: 0px 5px;
         }
 
         &.main-bets {
@@ -172,6 +180,7 @@ body {
             width:130px;
             height: 120px;
             border: 2px solid white;
+            background-color: $transparent-background-colour;
             border-radius: 5px;
             overflow: hidden;
             img {
@@ -181,11 +190,13 @@ body {
           }
         }
         &.tie {
+          color:black;
           width: 20%;
           margin: 0 auto;
           height: 50px;
           width: 70px;
           border: 2px solid white;
+          background-color: $transparent-background-colour;
           border-radius: 5px;
           img {
             height: 15px;

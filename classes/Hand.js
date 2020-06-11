@@ -102,7 +102,7 @@ export default class Hand {
     if (!array[0]) {
       return null
     } else {
-      return array.reduce((acc, el) => {
+      let score = array.reduce((acc, el) => {
         if(el[0] === 'A') {
           return acc + 1;
         } else if (el[0] === '1' || !Number(el[0])) {
@@ -111,6 +111,8 @@ export default class Hand {
            return acc + Number(el[0]);
         }
       }, 0);
+      score = String(score).split('');
+      return score.length > 1 ? Number(score[1]) : Number(score);
     }
   };
   

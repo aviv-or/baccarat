@@ -131,7 +131,7 @@ const dealHand = () => {
   updateScores();
   if (hand.natural) {
     results[0].innerHTML = 'Natural'
-    return handResult()
+    return setTimeout(handResult, 1000);
   }
   return setTimeout(dealThirdCard, 1000);
 }
@@ -157,12 +157,9 @@ const hideNextHandButton = () => {
 };
 
 const updateBets =  () => {
-  // boardBets[0].innerHTML = hand.playerBet;
-  // boardBets[1].innerHTML = hand.bankerBet;
-  // boardBets[2].innerHTML = hand.tieBet;
-  boardBets[0].innerHTML = hand.playerBet + `<br>` + hand.addChipsImages(hand.playerBet);
-  boardBets[1].innerHTML = hand.bankerBet + `<br>` + hand.addChipsImages(hand.bankerBet);
-  boardBets[2].innerHTML = hand.tieBet + `<br>` + hand.addChipsImages(hand.tieBet);
+  boardBets[0].innerHTML = hand.playerBet + '<br>' + hand.addChipsImages(hand.playerBet);
+  boardBets[1].innerHTML = hand.bankerBet + '<br>' + hand.addChipsImages(hand.bankerBet);
+  boardBets[2].innerHTML = hand.tieBet + '<br>' + hand.addChipsImages(hand.tieBet);
 };
 
 const updateBoard = () => {

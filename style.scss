@@ -51,10 +51,10 @@ body {
     .btn {
     min-width: 100px;
     max-width:50%;
-    height: 35px;
+    max-height: 35px;
     background-color: lightgray;
     margin: 0px auto;
-    padding-top: 10px;
+    padding: 10px;
   }
   main {
     
@@ -200,8 +200,8 @@ body {
   
   // Keyframes
 
-  .heartbeat{-webkit-animation:heartbeat 1.5s ease-in-out both;animation:heartbeat 1.5s ease-in-out both; color: rgb(241, 208, 16);}
-  .shadow-drop-2-bottom{-webkit-animation:shadow-drop-2-bottom .4s cubic-bezier(.25,.46,.45,.94) both;animation:shadow-drop-2-bottom .4s cubic-bezier(.25,.46,.45,.94) both}
+  .heartbeat{-webkit-animation:heartbeat 1.5s ease-in-out both;animation:heartbeat 1.5s ease-in-out both; color: rgb(241, 208, 16);z-index: 5;}
+  .shadow-drop-2-bottom{-webkit-animation:shadow-drop-2-bottom .4s cubic-bezier(.25,.46,.45,.94) both;animation:shadow-drop-2-bottom .4s cubic-bezier(.25,.46,.45,.94) both;z-index: 5}
 
 
 

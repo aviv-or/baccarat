@@ -99,23 +99,21 @@ export default class Hand {
   }
 
   readScore(array) {
-    console.log(array);
-    if (!array[0]) {return null} else {
-      let score = 0;
-      array.forEach((card) => {
-        if (card[0] === 'A') {
-          score += 1;
-        } else if (card[0] === '1' || !Number(card[0])) {
-          score += 0;
-        } else {
-          score += Number(card[0]);
+    if (!array[0]) {
+      return null
+    } else {
+      return array.reduce((acc, el) => {
+        if(el[0] === 'A') {
+          return acc + 1;
+        } else if (el[0] === '1' || !Number(el[0])) {
+          return acc + 0;
+         } else {
+           return acc + Number(el[0]);
         }
-      })
-      score = String(score).split('');
-      return score.length > 1 ? Number(score[1]) : Number(score);
+      }, 0);
     }
   };
-
+  
   get playerScore() {
     return this.readScore(this.playerHand);
   }

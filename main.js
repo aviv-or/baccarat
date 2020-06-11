@@ -203,10 +203,10 @@ const transferMoneyToWinner = () => {
     if (val) {
       player.bankroll += val;
       e.innerHTML = '0';
+      giveGoldHeartbeat(playerArea[2]);
     }
   })
   updatePlayerArea();
-  giveGoldHeartbeat(playerArea[2]);
 };
 
 const dealThirdCard = () => {
@@ -233,12 +233,8 @@ const handResult = () => {
   updatePlayerArea();
   updateResults();
   updateBets();
-  if (player.bankroll === 0) {
-    return setTimeout(outOfMoneyScreen, 3000);
-  } else {
-    showNextHandButton();
-    updateBoard();
-  }
+  showNextHandButton();
+  updateBoard();
 };
 
 const clearBoard = () => {
@@ -261,8 +257,12 @@ const resetForNextHand = () => {
 };
 
 const outOfMoneyScreen = () => {
+  if (player.bankroll === 0) {
+    return setTimeout(outOfMoneyScreen, 3000);
+  } else {
   outOfMoney.style.display = 'flex';
   mainGame.style.display = 'none';
+  }
 }
 
 const retryGame = () => {

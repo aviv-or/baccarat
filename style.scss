@@ -132,7 +132,10 @@ body {
         flex-wrap: wrap;
         div.name-section{
           border: 2px solid rgb(5, 26, 122);
-          padding: 10px;
+          border-radius: 5px;
+          padding: 5px;
+          flex-basis: 40%;
+          margin: 5px;
           font-weight: 500;
    
         }
@@ -172,7 +175,6 @@ body {
           white-space: nowrap;
           overflow: hidden;
           width: 100px;
-          // border: 2px solid yellow;
           border-radius: 5px;
           background-color: rgba(255, 255, 0, 0.15);
           text-align: right;
@@ -188,10 +190,12 @@ body {
 
         &.main-bets {
           display: flex;
-          justify-content: space-around;
+          justify-content: space-evenly;
+
           div{
-            width:130px;
-            height: 120px;
+            width: 40%;
+            margin-top: 5px;
+            height: 110px;
             border: 2px solid white;
             background-color: $transparent-background-colour;
             border-radius: 5px;

@@ -54,6 +54,7 @@ body #opening-screen p {
 body #opening-screen label, body #opening-screen input {
   padding: 5px;
   margin-bottom: 5px;
+  margin: 0 auto;
 }
 
 body #opening-screen #start {
@@ -69,7 +70,7 @@ body #out-of-money {
 
 body .btn {
   min-width: 100px;
-  max-width: 50%;
+  max-width: 30%;
   max-height: 35px;
   background-color: lightgray;
   margin: 0px auto;
@@ -144,7 +145,7 @@ body main section.boards {
           justify-content: space-evenly;
   -ms-flex-line-pack: center;
       align-content: center;
-  height: 25%;
+  height: 22%;
 }
 
 body main section.boards div {

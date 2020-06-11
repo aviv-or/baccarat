@@ -101,7 +101,7 @@ const placeChip = (id) => {
   id = `${id.split('-')[0]}Bet`;
   let val = Number(chipsArea.find(e=>e.classList.contains('selected')).firstElementChild.alt);
   console.log(val)
-  if (player.bankroll > 0) {
+  if (player.bankroll > 0 && player.bankroll - val >= 0) {
     hand[id] += val;
     player.bankroll -= val;
     showDealButton();
@@ -163,8 +163,8 @@ const updateBets =  () => {
 };
 
 const updateBoard = () => {
-  boards[0].innerHTML = hand.toPictureFormatPlayer // (hand.playerHand);
-  boards[1].innerHTML = hand.toPictureFormatComputer // (hand.computerHand);
+  boards[0].innerHTML = hand.toPictureFormatPlayer
+  boards[1].innerHTML = hand.toPictureFormatComputer
   shoeDisplay.innerHTML = `Cards left:${shoe.shoe.length}`;
   previousWinners.innerHTML = shoe.winnerLog
 };
@@ -234,7 +234,7 @@ const handResult = () => {
   updateResults();
   updateBets();
   if (player.bankroll === 0) {
-    return outOfMoneyScreen();
+    return setTimeout(outOfMoneyScreen, 3000);
   } else {
     showNextHandButton();
     updateBoard();

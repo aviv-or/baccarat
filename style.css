@@ -189,7 +189,8 @@ body main section.player-area div.name-section {
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
   margin: 5px;
-  font-weight: 500;
+  font-size: 19px;
+  font-weight: 520;
 }
 
 body main section.player-area div.chips-area {
@@ -213,6 +214,7 @@ body main section.player-area div.chips-area i.selected {
 body main section.player-area div.chips-area i img {
   width: 50px;
   height: 50px;
+  cursor: pointer;
 }
 
 body main section.board-buttons {
@@ -231,8 +233,7 @@ body main section div.previous-hands {
   width: 100px;
   border-radius: 5px;
   background-color: rgba(255, 255, 0, 0.15);
-  text-align: right;
-  text-align-last: right;
+  text-align: left;
 }
 
 body main section div.span-and-tie {

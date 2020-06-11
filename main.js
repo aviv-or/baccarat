@@ -93,7 +93,7 @@ const startGame = (playerName, deckSize) => {
   shoe.createShoe();
   console.log(shoe);
   updatePlayerArea();
-  shoeDisplay.innerHTML = `Cards left:${shoe.shoe.length}`;
+  shoeDisplay.innerHTML = `Cards left:<br>${shoe.shoe.length}`;
   hand = new Hand();
 }
 
@@ -250,7 +250,7 @@ const clearBoard = () => {
 
 const resetForNextHand = () => {
   let forLog = hand.winner[0];
-  shoe.winnerLog += ` ${forLog[0]}`;
+  shoe.winnerLog = 'Last: ' + `${forLog[0]} ` + shoe.winnerLog.slice(6);
   hand = new Hand;
   console.log(player, hand, shoe);
   clearBoard();

@@ -8,12 +8,12 @@ $transparent-background-colour: rgba(255, 255, 255, 0.144);
   text-align: center;
   font-size: 18px;
   font-weight: 530;
+  user-select: none;
 }
 
 body {
   height: 100vh;
   width: 100vw;
-  // background-color: rgb(22, 150, 22);
   background-image: url(./imgs/bg.jpg);
   background-repeat: repeat;
   display: flex;
@@ -24,8 +24,9 @@ body {
     display: none;
   }
 
+
   #opening-screen {
-    
+    border: 3px solid rgb(189, 186, 38);
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -191,7 +192,7 @@ body {
           border-radius: 5px;
           background-color: rgba(255, 255, 0, 0.15);
           text-align: left;
-        }
+          }
 
         &.span-and-tie{
           display:flex;

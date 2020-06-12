@@ -5,6 +5,10 @@
   text-align: center;
   font-size: 18px;
   font-weight: 530;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 body {
@@ -29,6 +33,7 @@ body #deal-button, body #next-hand, body #out-of-money {
 }
 
 body #opening-screen {
+  border: 3px solid #bdba26;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

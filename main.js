@@ -144,6 +144,8 @@ const hideDealButton = () => dealButton.style.display = 'none';
 
 const hideNextHandButton = () => nextHand.style.display = 'none';
 
+const resetHistory = () => shoe.winnerLog = 'History:';
+
 const drawCardSound = () => {
   let audio = document.createElement('audio');
   audio.src = "./imgs/audio/deal.mp3";
@@ -262,6 +264,7 @@ const resetForNextHand = () => {
 const outOfMoneyScreen = () => {
   outOfMoney.style.display = 'flex';
   mainGame.style.display = 'none';
+  resetHistory();
   clearBoard();
   }
 

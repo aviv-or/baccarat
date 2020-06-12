@@ -1,6 +1,6 @@
 # baccarat
 
-My take on the classic casino game
+My take on the classic casino game: You win if you survive a whole shoe!
 
 Week 3 Project @ Nology
 

@@ -43,12 +43,10 @@ start.addEventListener('click', () => {
   let playerName = document.getElementById('player-name').value;
   let deckSize = Array.from(document.querySelectorAll('Form > Input')).find(e=>e.checked).value;
   startGame(playerName, deckSize);
-  //some display stuff
 })
 
 dealButton.addEventListener('click', () => {
   dealHand();
-  //some display stuff
 })
 
 nextHand.addEventListener('click', () => {
@@ -99,7 +97,7 @@ const placeChip = (id) => {
   id = `${id.split('-')[0]}Bet`;
   let val = Number(chipsArea.find(e=>e.classList.contains('selected')).firstElementChild.alt);
   console.log(val)
-  if (player.bankroll > 0 && player.bankroll - val >= 0) {
+  if ((player.bankroll > 0 && player.bankroll - val >= 0)) {
     hand[id] += val;
     player.bankroll -= val;
     showDealButton();
@@ -135,25 +133,15 @@ const dealHand = () => {
   return setTimeout(dealThirdCard, 1000);
 }
 
-const unSelectAll = () => {
-  chipsArea.forEach(e=>{e.classList.remove('selected')})
-};
+const unSelectAll = () => chipsArea.forEach(e=>{e.classList.remove('selected')});
 
-const showDealButton = () => {
-  dealButton.style.display = 'block';
-};
+const showDealButton = () => dealButton.style.display = 'block';
 
-const showNextHandButton = () => {
-  nextHand.style.display = 'block';
-};
+const showNextHandButton = () => nextHand.style.display = 'block';
 
-const hideDealButton = () => {
-  dealButton.style.display = 'none';
-};
+const hideDealButton = () => dealButton.style.display = 'none';
 
-const hideNextHandButton = () => {
-  nextHand.style.display = 'none';
-};
+const hideNextHandButton = () => nextHand.style.display = 'none';
 
 const drawCardSound = () => {
   let audio = document.createElement('audio');
@@ -189,7 +177,6 @@ const updateScores = () => {
 const updateResults = () => {
   if (results[0].innerHTML) {results[0].innerHTML += `: ${hand.winner}`
 } else {
-
   results[0].innerHTML += hand.winner;
 }
 }

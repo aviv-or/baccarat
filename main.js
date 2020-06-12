@@ -56,6 +56,7 @@ nextHand.addEventListener('click', () => {
 chipsArea.forEach(e=>{
   e.addEventListener('click', () => {
     if (nextHand.style.display === 'block') {
+      console.log('hi');
       return unSelectAll();
     } else {
       unSelectAll();

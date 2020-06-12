@@ -44,8 +44,8 @@ body #opening-screen {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 50%;
-  height: 50%;
+  width: 80%;
+  height: 80%;
   margin: 0 auto;
 }
 

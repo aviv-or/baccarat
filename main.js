@@ -54,9 +54,9 @@ nextHand.addEventListener('click', () => {
 })
 
 chipsArea.forEach(e=>{
+
   e.addEventListener('click', () => {
-    if (nextHand.style.display === 'block') {
-      console.log('hi');
+    if (nextHand.style.display === 'block' || boards[0].innerHTML.length > 13) {
       return unSelectAll();
     } else {
       unSelectAll();
@@ -191,14 +191,14 @@ const giveGoldHeartbeat = (constant) => {
   constant.classList.add('heartbeat');
   setTimeout(()=>{
   constant.classList.remove('heartbeat');
-  }, 2000)
+  }, 1500)
 };
 
 const giveShadowDrop = (id) => {
   document.getElementById(id).classList.add('shadow-drop-2-bottom');
   setTimeout(()=>{
     document.getElementById(id).classList.remove('shadow-drop-2-bottom');
-    }, 2000)
+    }, 1500)
 }
 
 const transferMoneyToWinner = () => {
@@ -231,12 +231,12 @@ const handResult = () => {
   console.log(winnerArea);
   giveShadowDrop(winnerArea);
   hand.payoutBets();
-  setTimeout(transferMoneyToWinner, 2000);
+  setTimeout(transferMoneyToWinner, 1500);
   updatePlayerArea();
   updateResults();
   updateBets();
   updateBoard();
-  setTimeout(showNextHandButton, 2200)
+  setTimeout(showNextHandButton, 1600);
 };
 
 const clearBoard = () => {

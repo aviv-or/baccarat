@@ -15,6 +15,7 @@ const dealButton = document.getElementById('deal-button');
 const shoeDisplay = document.getElementById('shoe');
 const previousWinners = document.getElementById('previous-hands');
 const outOfMoney = document.getElementById('out-of-money');
+const endOfGame = document.getElementById('end-of-game');
 const playAgainButton = document.getElementById('retry');
 const audioOnPage = document.getElementById('audio');
 
@@ -259,6 +260,7 @@ const resetForNextHand = () => {
   console.log(player, hand, shoe);
   hideNextHandButton();
   if (player.bankroll === 0) { outOfMoneyScreen(); } 
+  if (shoe.shoe.length < 6) { shoeEmptyScreen(); } 
 };
 
 const outOfMoneyScreen = () => {
@@ -266,6 +268,14 @@ const outOfMoneyScreen = () => {
   mainGame.style.display = 'none';
   resetHistory();
   clearBoard();
+  }
+
+  const shoeEmptyScreen = () => {
+    endOfGame.style.display = 'flex';
+    mainGame.style.display = 'none';
+    document.getElementById('shoe-empty').innerHTML = `You've reached the end of the shoe! Your winnings is ${player.bankroll}. Congratulations!`
+    resetHistory();
+    clearBoard();
   }
 
 const retryGame = () => {

@@ -85,7 +85,6 @@ const startGame = (playerName, deckSize) => {
   openingScreen.style.display = 'none';
   mainGame.style.display = 'flex';
   player = new Player(playerName, 1000);
-  console.log('hi')
   shoe = new Shoe(deckSize);
   shoe.dealADeck();
   shoe.createShoe();
@@ -98,7 +97,6 @@ const startGame = (playerName, deckSize) => {
 const placeChip = (id) => {
   id = `${id.split('-')[0]}Bet`;
   let val = Number(chipsArea.find(e=>e.classList.contains('selected')).firstElementChild.alt);
-  console.log(val)
   if ((player.bankroll > 0 && player.bankroll - val >= 0)) {
     hand[id] += val;
     player.bankroll -= val;
@@ -231,7 +229,6 @@ const dealThirdCard = () => {
 const handResult = () => {
   console.log(hand.winner);
   let winnerArea = `${hand.winner.split(' ')[0].toLowerCase()}-bet`
-  console.log(winnerArea);
   giveShadowDrop(winnerArea);
   hand.payoutBets();
   setTimeout(transferMoneyToWinner, 1500);

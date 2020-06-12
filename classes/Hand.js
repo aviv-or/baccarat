@@ -96,12 +96,9 @@ export default class Hand {
 
   payoutBets(){
     let winner = this.winner.split(' ')[0].toLowerCase();
-    console.log(winner);
-
     ['player', 'banker', 'tie'].forEach(e=>{
       e === winner ? this[`${e}BetPay`]() : this[`${e}Bet`] = 0
     })
-
   }
 
   resetBet(){

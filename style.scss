@@ -14,6 +14,8 @@ $transparent-background-colour: rgba(255, 255, 255, 0.144);
 body {
   height: 100vh;
   width: 100vw;
+  max-width: 600px;
+  margin: 0 auto;
   background-image: url(./imgs/bg.jpg);
   background-repeat: repeat;
   display: flex;

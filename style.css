@@ -1,6 +1,7 @@
-.main-game-board {
+main {
     background-image: url(./imgs/bg.jpg);
   background-repeat: repeat;
+    background-color: green;
 }
 
 
@@ -54,8 +55,6 @@ body #opening-screen {
   width: 80%;
   height: 80%;
   margin: 0 auto;
-    background-image: url(./imgs/bg.jpg);
-  background-repeat: repeat;
 }
 
 body #opening-screen input#player-name {

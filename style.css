@@ -16,8 +16,7 @@ body {
   width: 100vw;
   max-width: 600px;
   margin: 0 auto;
-  background-image: url(./imgs/bg.jpg);
-  background-repeat: repeat;
+  background: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

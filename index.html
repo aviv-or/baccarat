@@ -9,26 +9,26 @@
 <body>
   
   <section class="opening-screen" id="opening-screen">
-    <h2>Welcome to Baccarat</h2>
-    <p>Your name:</p>
+    <h2>欢迎来到百家乐</h2>
+    <p>名字:</p>
     <input type="text" placeholder="Phil Ivey" id="player-name">
-    <p>How many decks?</p>
+    <p>多少副扑克牌?</p>
     <form action="">
-    <label for="four-decks">Four:</label>
+    <label for="four-decks"> 四:</label>
     <input type="radio" id="four-decks" name="decks" value="4">
-    <label for="six-decks">Six:</label>
+    <label for="six-decks">六:</label>
     <input type="radio" id="six-decks" name="decks" value="6">
     <br>
-    <label for="eight-decks">Eight:</label>
+    <label for="eight-decks">八:</label>
     <input type="radio" id="eight-decks" name="decks" value="8">
   </form>
-  <div class="btn" id="start">Start</div>
+  <div class="btn" id="start">开始</div>
   </section>
 
   <main class="main-game-board">
     <section class="top-flex">
-      <div class="previous-hands" id="previous-hands">History:</div>
-      <h2>Baccarat  </h2>
+      <div class="previous-hands" id="previous-hands">历史:</div>
+      <h2>百家乐  </h2>
       <div class="shoe" id="shoe">Shoe<br></div>
     </section>
 
@@ -37,24 +37,24 @@
     </section>
 
     <section class="scores">
-      <div id="player-score">Score</div>
-      <div id="banker-score">Score</div>
+      <div id="player-score">分数</div>
+      <div id="banker-score">分数</div>
     </section>
 
     <section class="boards">
-      <div id="player-board">Player board</div>
+      <div id="player-board">闲家</div>
       <div id="banker-board">Banker board</div>
     </section>
 
     <section class="board-bets">
-      <span>tie bet: 10:1</span>
+      <span>和局: 10:1</span>
         <div class="span-and-tie">
-        <span>player bet:<br>1:1</span>
+        <span>闲家投注:<br>1:1</span>
         <div class="tie" id="tie-bet"></div>
-        <span>banker bet:<br>1:1</span>
+        <span>庄家投注:<br>1:1</span>
       </div>
       <div class="main-bets">
-        <div class="bets" id="player-bet">Tap on a chip and click to drop in a white betting square</div>
+        <div class="bets" id="player-bet">点击选择筹码后将其拉入白色投注方格内</div>
         <div class="bets" id="banker-bet"></div>
       </div>
     </section>
